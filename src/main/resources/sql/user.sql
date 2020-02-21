@@ -1,4 +1,4 @@
-CREATE TABLE `user` (
+CREATE TABLE `wenju-user` (
     `user_id`   varchar (30)    NOT NULL COMMENT '主键',
     `phone`     varchar (11)    NOT NULL COMMENT '手机号',
     `real_name` varchar (20)    NOT NULL COMMENT '真实姓名',
