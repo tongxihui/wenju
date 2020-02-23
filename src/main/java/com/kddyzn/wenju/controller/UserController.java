@@ -6,6 +6,8 @@ import com.kddyzn.wenju.model.UserV0;
 import com.kddyzn.wenju.model.params.UpdateUserParam;
 import com.kddyzn.wenju.model.params.UserLoginParam;
 import com.kddyzn.wenju.service.UserService;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -20,12 +22,8 @@ public class UserController {
     @Resource
     UserService userService;
 
-    /**
-     * 用户登录
-     *
-     * @param param
-     * @return
-     */
+    @ApiOperation(value = "用户登录", notes = "统一认证登录")
+    @ApiImplicitParam(required = true, dataType = "String")
     @PostMapping("/login")
     public HttpResult userLogin(
             @RequestBody @Valid UserLoginParam param) {
@@ -33,12 +31,8 @@ public class UserController {
         return new HttpResult(result ? "登录成功" : "登录失败");
     }
 
-    /**
-     * 根据id获取用户信息
-     *
-     * @param userId
-     * @return
-     */
+    @ApiOperation(value = "查询用户信息", notes = "根据学号/工号查询用户信息")
+    @ApiImplicitParam(name = "userId", value = "学号/工号", required = true, dataType = "String")
     @GetMapping("/id/{userId}")
     public HttpResult getUserById(@PathVariable String userId) {
         if (userId == null || userId.length() == 0) {
@@ -48,6 +42,8 @@ public class UserController {
         return new HttpResult(UserV0.toUserVo(userP0));
     }
 
+    @ApiOperation(value = "更新用户信息")
+    @ApiImplicitParam()
     @PutMapping("")
     public HttpResult updateUser(
             @RequestBody @Valid UpdateUserParam param) {
@@ -58,11 +54,7 @@ public class UserController {
         return new HttpResult("更新成功");
     }
 
-    /**
-     * 获取所有用户
-     *
-     * @return
-     */
+    @ApiOperation(value = "查询所有用户")
     @GetMapping("")
     public HttpResult getAllUser() {
         List<UserP0> p0List = userService.getAll();

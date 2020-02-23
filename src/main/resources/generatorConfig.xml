@@ -52,14 +52,14 @@
 <!--        </table>-->
 
         <!-- 提交表-->
-        <table tableName="wenju_commit" mapperName="CommitMapper" domainObjectName="CommitP0">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
+<!--        <table tableName="wenju_commit" mapperName="CommitMapper" domainObjectName="CommitP0">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
 
         <!-- 文件表-->
-        <table tableName="wenju_file" mapperName="FileMapper" domainObjectName="FileP0">
-            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-        </table>
+<!--        <table tableName="wenju_file" mapperName="FileMapper" domainObjectName="FileP0">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
 
     </context>
 </generatorConfiguration>
