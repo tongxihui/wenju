@@ -6,8 +6,7 @@
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="real_name" jdbcType="VARCHAR" property="realName" />
     <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="user_salt" jdbcType="VARCHAR" property="userSalt" />
+    <result column="token" jdbcType="VARCHAR" property="token" />
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="qq" jdbcType="VARCHAR" property="qq" />
     <result column="wx" jdbcType="VARCHAR" property="wx" />
@@ -111,8 +110,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    user_id, phone, real_name, nick_name, password, user_salt, email, qq, wx, status, 
-    extra
+    user_id, phone, real_name, nick_name, token, email, qq, wx, status, extra
   </sql>
   <select id="selectByExample" parameterType="com.kddyzn.wenju.dao.po.auto.UserP0Example" resultMap="BaseResultMap">
     select
@@ -120,7 +118,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from wenju-user
+    from wenju_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -131,15 +129,15 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from wenju-user
+    from wenju_user
     where user_id = #{userId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from wenju-user
+    delete from wenju_user
     where user_id = #{userId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.kddyzn.wenju.dao.po.auto.UserP0Example">
-    delete from wenju-user
+    delete from wenju_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -148,20 +146,20 @@
     <selectKey keyProperty="userId" order="AFTER" resultType="java.lang.String">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into wenju-user (phone, real_name, nick_name, 
-      password, user_salt, email, 
-      qq, wx, status, 
+    insert into wenju_user (phone, real_name, nick_name, 
+      token, email, qq, wx, 
+      status, 
       extra)
     values (#{phone,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{userSalt,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{qq,jdbcType=VARCHAR}, #{wx,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.common.typehandler.UserStatusEnumHandler}, 
+      #{token,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{wx,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.common.typehandler.UserStatusEnumHandler}, 
       #{extra,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.kddyzn.wenju.dao.po.auto.UserP0">
     <selectKey keyProperty="userId" order="AFTER" resultType="java.lang.String">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into wenju-user
+    insert into wenju_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="phone != null">
         phone,
@@ -172,11 +170,8 @@
       <if test="nickName != null">
         nick_name,
       </if>
-      <if test="password != null">
-        password,
-      </if>
-      <if test="userSalt != null">
-        user_salt,
+      <if test="token != null">
+        token,
       </if>
       <if test="email != null">
         email,
@@ -204,11 +199,8 @@
       <if test="nickName != null">
         #{nickName,jdbcType=VARCHAR},
       </if>
-      <if test="password != null">
-        #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="userSalt != null">
-        #{userSalt,jdbcType=VARCHAR},
+      <if test="token != null">
+        #{token,jdbcType=VARCHAR},
       </if>
       <if test="email != null">
         #{email,jdbcType=VARCHAR},
@@ -228,13 +220,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.kddyzn.wenju.dao.po.auto.UserP0Example" resultType="java.lang.Long">
-    select count(*) from wenju-user
+    select count(*) from wenju_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update wenju-user
+    update wenju_user
     <set>
       <if test="record.userId != null">
         user_id = #{record.userId,jdbcType=VARCHAR},
@@ -248,11 +240,8 @@
       <if test="record.nickName != null">
         nick_name = #{record.nickName,jdbcType=VARCHAR},
       </if>
-      <if test="record.password != null">
-        password = #{record.password,jdbcType=VARCHAR},
-      </if>
-      <if test="record.userSalt != null">
-        user_salt = #{record.userSalt,jdbcType=VARCHAR},
+      <if test="record.token != null">
+        token = #{record.token,jdbcType=VARCHAR},
       </if>
       <if test="record.email != null">
         email = #{record.email,jdbcType=VARCHAR},
@@ -275,13 +264,12 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update wenju-user
+    update wenju_user
     set user_id = #{record.userId,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=VARCHAR},
       real_name = #{record.realName,jdbcType=VARCHAR},
       nick_name = #{record.nickName,jdbcType=VARCHAR},
-      password = #{record.password,jdbcType=VARCHAR},
-      user_salt = #{record.userSalt,jdbcType=VARCHAR},
+      token = #{record.token,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
       qq = #{record.qq,jdbcType=VARCHAR},
       wx = #{record.wx,jdbcType=VARCHAR},
@@ -292,7 +280,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.kddyzn.wenju.dao.po.auto.UserP0">
-    update wenju-user
+    update wenju_user
     <set>
       <if test="phone != null">
         phone = #{phone,jdbcType=VARCHAR},
@@ -303,11 +291,8 @@
       <if test="nickName != null">
         nick_name = #{nickName,jdbcType=VARCHAR},
       </if>
-      <if test="password != null">
-        password = #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="userSalt != null">
-        user_salt = #{userSalt,jdbcType=VARCHAR},
+      <if test="token != null">
+        token = #{token,jdbcType=VARCHAR},
       </if>
       <if test="email != null">
         email = #{email,jdbcType=VARCHAR},
@@ -328,12 +313,11 @@
     where user_id = #{userId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.kddyzn.wenju.dao.po.auto.UserP0">
-    update wenju-user
+    update wenju_user
     set phone = #{phone,jdbcType=VARCHAR},
       real_name = #{realName,jdbcType=VARCHAR},
       nick_name = #{nickName,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      user_salt = #{userSalt,jdbcType=VARCHAR},
+      token = #{token,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       qq = #{qq,jdbcType=VARCHAR},
       wx = #{wx,jdbcType=VARCHAR},

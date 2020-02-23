@@ -419,143 +419,73 @@ public class UserP0Example {
             return (Criteria) this;
         }
 
-        public Criteria andPasswordIsNull() {
-            addCriterion("password is null");
+        public Criteria andTokenIsNull() {
+            addCriterion("token is null");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordIsNotNull() {
-            addCriterion("password is not null");
+        public Criteria andTokenIsNotNull() {
+            addCriterion("token is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordEqualTo(String value) {
-            addCriterion("password =", value, "password");
+        public Criteria andTokenEqualTo(String value) {
+            addCriterion("token =", value, "token");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordNotEqualTo(String value) {
-            addCriterion("password <>", value, "password");
+        public Criteria andTokenNotEqualTo(String value) {
+            addCriterion("token <>", value, "token");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordGreaterThan(String value) {
-            addCriterion("password >", value, "password");
+        public Criteria andTokenGreaterThan(String value) {
+            addCriterion("token >", value, "token");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordGreaterThanOrEqualTo(String value) {
-            addCriterion("password >=", value, "password");
+        public Criteria andTokenGreaterThanOrEqualTo(String value) {
+            addCriterion("token >=", value, "token");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordLessThan(String value) {
-            addCriterion("password <", value, "password");
+        public Criteria andTokenLessThan(String value) {
+            addCriterion("token <", value, "token");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordLessThanOrEqualTo(String value) {
-            addCriterion("password <=", value, "password");
+        public Criteria andTokenLessThanOrEqualTo(String value) {
+            addCriterion("token <=", value, "token");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordLike(String value) {
-            addCriterion("password like", value, "password");
+        public Criteria andTokenLike(String value) {
+            addCriterion("token like", value, "token");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordNotLike(String value) {
-            addCriterion("password not like", value, "password");
+        public Criteria andTokenNotLike(String value) {
+            addCriterion("token not like", value, "token");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordIn(List<String> values) {
-            addCriterion("password in", values, "password");
+        public Criteria andTokenIn(List<String> values) {
+            addCriterion("token in", values, "token");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordNotIn(List<String> values) {
-            addCriterion("password not in", values, "password");
+        public Criteria andTokenNotIn(List<String> values) {
+            addCriterion("token not in", values, "token");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordBetween(String value1, String value2) {
-            addCriterion("password between", value1, value2, "password");
+        public Criteria andTokenBetween(String value1, String value2) {
+            addCriterion("token between", value1, value2, "token");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordNotBetween(String value1, String value2) {
-            addCriterion("password not between", value1, value2, "password");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserSaltIsNull() {
-            addCriterion("user_salt is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserSaltIsNotNull() {
-            addCriterion("user_salt is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserSaltEqualTo(String value) {
-            addCriterion("user_salt =", value, "userSalt");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserSaltNotEqualTo(String value) {
-            addCriterion("user_salt <>", value, "userSalt");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserSaltGreaterThan(String value) {
-            addCriterion("user_salt >", value, "userSalt");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserSaltGreaterThanOrEqualTo(String value) {
-            addCriterion("user_salt >=", value, "userSalt");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserSaltLessThan(String value) {
-            addCriterion("user_salt <", value, "userSalt");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserSaltLessThanOrEqualTo(String value) {
-            addCriterion("user_salt <=", value, "userSalt");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserSaltLike(String value) {
-            addCriterion("user_salt like", value, "userSalt");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserSaltNotLike(String value) {
-            addCriterion("user_salt not like", value, "userSalt");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserSaltIn(List<String> values) {
-            addCriterion("user_salt in", values, "userSalt");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserSaltNotIn(List<String> values) {
-            addCriterion("user_salt not in", values, "userSalt");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserSaltBetween(String value1, String value2) {
-            addCriterion("user_salt between", value1, value2, "userSalt");
-            return (Criteria) this;
-        }
-
-        public Criteria andUserSaltNotBetween(String value1, String value2) {
-            addCriterion("user_salt not between", value1, value2, "userSalt");
+        public Criteria andTokenNotBetween(String value1, String value2) {
+            addCriterion("token not between", value1, value2, "token");
             return (Criteria) this;
         }
 

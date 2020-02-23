@@ -1,10 +1,9 @@
-CREATE TABLE `wenju-user` (
+CREATE TABLE `wenju_user` (
     `user_id`   varchar (30)    NOT NULL COMMENT '主键',
     `phone`     varchar (11)    NOT NULL COMMENT '手机号',
     `real_name` varchar (20)    NOT NULL COMMENT '真实姓名',
     `nick_name` varchar (30)    DEFAULT NULL COMMENT '昵称',
-    `password`  varchar (40)    NOT NULL COMMENT '密码',
-    `user_salt` varchar (10)    NOT NULL COMMENT '用户密码等hash计算相关salt',
+    `token`     varchar (300)   NOT NULL COMMENT '登录令牌',
     `email`     varchar (100)   DEFAULT NULL COMMENT '邮箱',
     `qq`        varchar (12)    DEFAULT NULL COMMENT 'QQ',
     `wx`        varchar (32)    DEFAULT NULL COMMENT '微信',

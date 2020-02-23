@@ -11,9 +11,7 @@ public class UserP0 {
 
     private String nickName;
 
-    private String password;
-
-    private String userSalt;
+    private String token;
 
     private String email;
 
@@ -57,20 +55,12 @@ public class UserP0 {
         this.nickName = nickName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getToken() {
+        return token;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getUserSalt() {
-        return userSalt;
-    }
-
-    public void setUserSalt(String userSalt) {
-        this.userSalt = userSalt;
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public String getEmail() {
