@@ -5,7 +5,7 @@ import com.kddyzn.wenju.dao.po.auto.UserP0;
 import com.kddyzn.wenju.dao.po.auto.UserP0Example;
 import com.kddyzn.wenju.model.params.UpdateUserParam;
 import com.kddyzn.wenju.service.UserService;
-import org.apache.catalina.User;
+import com.kddyzn.wenju.service.util.CumtJwUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -17,9 +17,20 @@ public class UserServiceImpl implements UserService {
     @Resource
     private UserMapper userMapper;
 
+    @Resource
+    private CumtJwUtil cumtJwUtil;
+
     @Override
-    public String login(String userId, String password) {
-        return null;
+    public boolean login(String userId, String password) {
+        String token = cumtJwUtil.getLoginToken(userId, password);
+        if (token == null || token.length() == 0) {
+            return false;
+        }
+        UserP0 userP0 = new UserP0();
+        userP0.setUserId(userId);
+        userP0.setToken(token);
+        userMapper.insertSelective(userP0);
+        return true;
     }
 
     @Override

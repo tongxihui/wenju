@@ -1,4 +1,4 @@
-package com.kddyzn.wenju.web;
+package com.kddyzn.wenju.controller;
 
 import com.kddyzn.wenju.dao.po.auto.UserP0;
 import com.kddyzn.wenju.model.HttpResult;
@@ -6,7 +6,6 @@ import com.kddyzn.wenju.model.UserV0;
 import com.kddyzn.wenju.model.params.UpdateUserParam;
 import com.kddyzn.wenju.model.params.UserLoginParam;
 import com.kddyzn.wenju.service.UserService;
-import com.kddyzn.wenju.service.util.CumtJwUtil;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -30,8 +29,8 @@ public class UserController {
     @PostMapping("/login")
     public HttpResult userLogin(
             @RequestBody @Valid UserLoginParam param) {
-        System.out.println(new CumtJwUtil().getLoginToken("04171180", "a821589498wmr"));
-        return new HttpResult(0, "success", null);
+        boolean result = userService.login(param.getUserId(), param.getPassword());
+        return new HttpResult(result ? "登录成功" : "登录失败");
     }
 
     /**
@@ -52,7 +51,11 @@ public class UserController {
     @PutMapping("")
     public HttpResult updateUser(
             @RequestBody @Valid UpdateUserParam param) {
-        return new HttpResult();
+        if (getUserById(param.getUserId()) == null) {
+            return null;
+        }
+        userService.updateUser(param);
+        return new HttpResult("更新成功");
     }
 
     /**

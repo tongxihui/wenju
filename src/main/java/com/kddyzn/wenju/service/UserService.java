@@ -13,7 +13,7 @@ public interface UserService {
      * @param password
      * @return
      */
-    String login(String userId, String password);
+    boolean login(String userId, String password);
 
     /**
      * 根据id查询用户信息
