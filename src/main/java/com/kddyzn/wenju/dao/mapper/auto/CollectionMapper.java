@@ -3,8 +3,11 @@ package com.kddyzn.wenju.dao.mapper.auto;
 import com.kddyzn.wenju.dao.po.auto.CollectionP0;
 import com.kddyzn.wenju.dao.po.auto.CollectionP0Example;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface CollectionMapper {
     long countByExample(CollectionP0Example example);
 
