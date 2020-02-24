@@ -15,6 +15,8 @@ public class FileP0 {
 
     private String url;
 
+    private Integer index;
+
     public Long getId() {
         return id;
     }
@@ -69,5 +71,13 @@ public class FileP0 {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public Integer getIndex() {
+        return index;
+    }
+
+    public void setIndex(Integer index) {
+        this.index = index;
     }
 }

@@ -5,7 +5,7 @@ import com.kddyzn.wenju.dao.po.auto.UserP0;
 import com.kddyzn.wenju.dao.po.auto.UserP0Example;
 import com.kddyzn.wenju.model.params.UpdateUserParam;
 import com.kddyzn.wenju.service.UserService;
-import com.kddyzn.wenju.service.util.CumtJwUtil;
+import com.kddyzn.wenju.util.CumtJwUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

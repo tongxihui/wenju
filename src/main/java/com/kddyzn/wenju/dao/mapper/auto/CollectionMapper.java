@@ -16,15 +16,21 @@ public interface CollectionMapper {
 
     int insertSelective(CollectionP0 record);
 
+    List<CollectionP0> selectByExampleWithBLOBs(CollectionP0Example example);
+
     List<CollectionP0> selectByExample(CollectionP0Example example);
 
     CollectionP0 selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") CollectionP0 record, @Param("example") CollectionP0Example example);
 
+    int updateByExampleWithBLOBs(@Param("record") CollectionP0 record, @Param("example") CollectionP0Example example);
+
     int updateByExample(@Param("record") CollectionP0 record, @Param("example") CollectionP0Example example);
 
     int updateByPrimaryKeySelective(CollectionP0 record);
+
+    int updateByPrimaryKeyWithBLOBs(CollectionP0 record);
 
     int updateByPrimaryKey(CollectionP0 record);
 }

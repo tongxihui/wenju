@@ -15,6 +15,8 @@ public class CollectionP0 {
 
     private CollectionStatusEnum status;
 
+    private String fileTemplate;
+
     public Integer getId() {
         return id;
     }
@@ -61,5 +63,13 @@ public class CollectionP0 {
 
     public void setStatus(CollectionStatusEnum status) {
         this.status = status;
+    }
+
+    public String getFileTemplate() {
+        return fileTemplate;
+    }
+
+    public void setFileTemplate(String fileTemplate) {
+        this.fileTemplate = fileTemplate;
     }
 }

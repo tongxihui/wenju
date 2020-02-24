@@ -9,6 +9,7 @@
     <result column="create_time" jdbcType="BIGINT" property="createTime" />
     <result column="size" jdbcType="DOUBLE" property="size" />
     <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="index" jdbcType="INTEGER" property="index" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, collector_id, updater_id, create_time, size, url
+    id, name, collector_id, updater_id, create_time, size, url, index
   </sql>
   <select id="selectByExample" parameterType="com.kddyzn.wenju.dao.po.auto.FileP0Example" resultMap="BaseResultMap">
     select
@@ -106,11 +107,11 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into wenju_file (name, collector_id, updater_id, 
-      create_time, size, url
-      )
+      create_time, size, url, 
+      index)
     values (#{name,jdbcType=VARCHAR}, #{collectorId,jdbcType=INTEGER}, #{updaterId,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=BIGINT}, #{size,jdbcType=DOUBLE}, #{url,jdbcType=VARCHAR}
-      )
+      #{createTime,jdbcType=BIGINT}, #{size,jdbcType=DOUBLE}, #{url,jdbcType=VARCHAR}, 
+      #{index,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.kddyzn.wenju.dao.po.auto.FileP0">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -136,6 +137,9 @@
       <if test="url != null">
         url,
       </if>
+      <if test="index != null">
+        index,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="name != null">
@@ -155,6 +159,9 @@
       </if>
       <if test="url != null">
         #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="index != null">
+        #{index,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -188,6 +195,9 @@
       <if test="record.url != null">
         url = #{record.url,jdbcType=VARCHAR},
       </if>
+      <if test="record.index != null">
+        index = #{record.index,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -201,7 +211,8 @@
       updater_id = #{record.updaterId,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=BIGINT},
       size = #{record.size,jdbcType=DOUBLE},
-      url = #{record.url,jdbcType=VARCHAR}
+      url = #{record.url,jdbcType=VARCHAR},
+      index = #{record.index,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -227,6 +238,9 @@
       <if test="url != null">
         url = #{url,jdbcType=VARCHAR},
       </if>
+      <if test="index != null">
+        index = #{index,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -237,7 +251,8 @@
       updater_id = #{updaterId,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=BIGINT},
       size = #{size,jdbcType=DOUBLE},
-      url = #{url,jdbcType=VARCHAR}
+      url = #{url,jdbcType=VARCHAR},
+      index = #{index,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

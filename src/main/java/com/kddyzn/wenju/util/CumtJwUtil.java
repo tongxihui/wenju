@@ -1,4 +1,4 @@
-package com.kddyzn.wenju.service.util;
+package com.kddyzn.wenju.util;
 
 import com.alibaba.fastjson.JSON;
 import com.kddyzn.wenju.constant.AppConstant;

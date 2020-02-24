@@ -9,6 +9,9 @@
     <result column="deadline" jdbcType="BIGINT" property="deadline" />
     <result column="status" jdbcType="VARCHAR" property="status" typeHandler="com.kddyzn.wenju.common.typehandler.CollectionStatusEnumHandler" />
   </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.kddyzn.wenju.dao.po.auto.CollectionP0">
+    <result column="file_template" jdbcType="LONGVARCHAR" property="fileTemplate" />
+  </resultMap>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -108,6 +111,25 @@
   <sql id="Base_Column_List">
     id, name, collector, create_time, deadline, status
   </sql>
+  <sql id="Blob_Column_List">
+    file_template
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.kddyzn.wenju.dao.po.auto.CollectionP0Example" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from wenju_collection
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByExample" parameterType="com.kddyzn.wenju.dao.po.auto.CollectionP0Example" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -122,9 +144,11 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from wenju_collection
     where id = #{id,jdbcType=INTEGER}
   </select>
@@ -143,11 +167,11 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into wenju_collection (name, collector, create_time, 
-      deadline, status
-      )
+      deadline, status, 
+      file_template)
     values (#{name,jdbcType=VARCHAR}, #{collector,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT}, 
-      #{deadline,jdbcType=BIGINT}, #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.common.typehandler.CollectionStatusEnumHandler}
-      )
+      #{deadline,jdbcType=BIGINT}, #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.common.typehandler.CollectionStatusEnumHandler}, 
+      #{fileTemplate,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.kddyzn.wenju.dao.po.auto.CollectionP0">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -170,6 +194,9 @@
       <if test="status != null">
         status,
       </if>
+      <if test="fileTemplate != null">
+        file_template,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="name != null">
@@ -186,6 +213,9 @@
       </if>
       <if test="status != null">
         #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.common.typehandler.CollectionStatusEnumHandler},
+      </if>
+      <if test="fileTemplate != null">
+        #{fileTemplate,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -216,7 +246,23 @@
       <if test="record.status != null">
         status = #{record.status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.common.typehandler.CollectionStatusEnumHandler},
       </if>
+      <if test="record.fileTemplate != null">
+        file_template = #{record.fileTemplate,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update wenju_collection
+    set id = #{record.id,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      collector = #{record.collector,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=BIGINT},
+      deadline = #{record.deadline,jdbcType=BIGINT},
+      status = #{record.status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.common.typehandler.CollectionStatusEnumHandler},
+      file_template = #{record.fileTemplate,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -251,7 +297,20 @@
       <if test="status != null">
         status = #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.common.typehandler.CollectionStatusEnumHandler},
       </if>
+      <if test="fileTemplate != null">
+        file_template = #{fileTemplate,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.kddyzn.wenju.dao.po.auto.CollectionP0">
+    update wenju_collection
+    set name = #{name,jdbcType=VARCHAR},
+      collector = #{collector,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=BIGINT},
+      deadline = #{deadline,jdbcType=BIGINT},
+      status = #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.common.typehandler.CollectionStatusEnumHandler},
+      file_template = #{fileTemplate,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.kddyzn.wenju.dao.po.auto.CollectionP0">
