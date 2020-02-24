@@ -32,10 +32,17 @@ public class UserController {
     }
 
     @ApiOperation(value = "查询用户信息", notes = "根据学号/工号查询用户信息")
-    @ApiImplicitParam(name = "userId", value = "学号/工号", required = true, dataType = "String")
-    @GetMapping("/id/{userId}")
+    @ApiImplicitParam(name = "userId", value = "学号/工号", required = false, dataType = "String")
+    @GetMapping("/{userId}")
     public HttpResult getUserById(@PathVariable String userId) {
-        if (userId == null || userId.length() == 0) {
+        //获取全部
+        if (userId == null) {
+            List<UserP0> p0List = userService.getAll();
+            List<UserV0> v0List = new ArrayList<>();
+            p0List.forEach((userP0 -> v0List.add(UserV0.toUserVo(userP0))));
+            return new HttpResult(v0List);
+        }
+        if (userId.length() == 0) {
             return null;
         }
         UserP0 userP0 = userService.getUserById(userId);
@@ -52,14 +59,5 @@ public class UserController {
         }
         userService.updateUser(param);
         return new HttpResult("更新成功");
-    }
-
-    @ApiOperation(value = "查询所有用户")
-    @GetMapping("")
-    public HttpResult getAllUser() {
-        List<UserP0> p0List = userService.getAll();
-        List<UserV0> v0List = new ArrayList<>();
-        p0List.forEach((userP0 -> v0List.add(UserV0.toUserVo(userP0))));
-        return new HttpResult(v0List);
     }
 }

@@ -2,22 +2,57 @@ package com.kddyzn.wenju.service;
 
 import com.kddyzn.wenju.common.enums.CollectionStatusEnum;
 import com.kddyzn.wenju.dao.po.auto.CollectionP0;
+import com.kddyzn.wenju.model.params.CreateCollectionParam;
+import com.kddyzn.wenju.model.params.UpdateCollationParam;
 
 import java.util.List;
 
 public interface CollectionService {
 
-    void addCollection(CollectionP0 collectionP0);
+    /**
+     * 增加收集
+     * @param param
+     * @return
+     */
+    Integer addCollection(CreateCollectionParam param);
 
-    void deleteCollection();
+    /**
+     * 删除收集
+     * @param collectionId
+     */
+    void deleteCollection(Integer collectionId);
 
-    void updateCollection();
+    /**
+     * 更新收集
+     * @param param
+     */
+    void updateCollection(UpdateCollationParam param);
 
-    CollectionP0 getCollectionById(String id);
+    /**
+     * 根据id获取收集
+     * @param id
+     * @return
+     */
+    CollectionP0 getCollectionById(Integer id);
 
+    /**
+     * 根据名称获取收集
+     * @param name
+     * @return
+     */
     List<CollectionP0> getCollectionByName(String name);
 
+    /**
+     * 根据收集者id获取收集
+     * @param userId
+     * @return
+     */
     List<CollectionP0> getCollectionByCollector(String userId);
 
+    /**
+     * 根据状态获取收集
+     * @param status
+     * @return
+     */
     List<CollectionP0> getCollectionByStatus(CollectionStatusEnum status);
 }

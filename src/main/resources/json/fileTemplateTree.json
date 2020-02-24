@@ -1,8 +1,14 @@
 {
   "file_name_template": [
-    {"USER_ID": "04171180"},
-    {"USER_REAL_NAME": "王木荣"},
-    {"CUSTOM_TEXT": "2020"}
+    {
+      "USER_ID": "04171180"
+    },
+    {
+      "USER_REAL_NAME": "王木荣"
+    },
+    {
+      "CUSTOM_TEXT": "2020"
+    }
   ],
   "is_folder": true,
   "extension": null,
@@ -10,7 +16,9 @@
   "children": [
     {
       "file_name_template": [
-        {"CUSTOM_TEXT": "表10"}
+        {
+          "CUSTOM_TEXT": "表10"
+        }
       ],
       "is_folder": false,
       "extension": "XLSX",
@@ -19,7 +27,9 @@
     },
     {
       "file_name_template": [
-        {"CUSTOM_TEXT": "表9"}
+        {
+          "CUSTOM_TEXT": "表9"
+        }
       ],
       "is_folder": false,
       "extension": "DOCX",
