@@ -42,6 +42,8 @@ public class UserController {
             p0List.forEach((userP0 -> v0List.add(UserV0.toUserVo(userP0))));
             return new HttpResult(v0List);
         }
+
+        //获取单个
         if (userId.length() == 0) {
             return null;
         }
@@ -55,6 +57,7 @@ public class UserController {
     public HttpResult updateUser(
             @RequestBody @Valid UpdateUserParam param) {
         if (getUserById(param.getUserId()) == null) {
+            //不存在
             return null;
         }
         userService.updateUser(param);

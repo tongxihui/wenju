@@ -7,7 +7,7 @@ import com.kddyzn.wenju.dao.po.auto.CollectionP0Example;
 import com.kddyzn.wenju.model.params.CreateCollectionParam;
 import com.kddyzn.wenju.model.params.UpdateCollationParam;
 import com.kddyzn.wenju.service.CollectionService;
-import org.apache.commons.lang3.StringUtils;
+import io.micrometer.core.instrument.util.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -46,14 +46,24 @@ public class CollectionServiceImpl implements CollectionService {
     public void updateCollection(UpdateCollationParam param) {
         CollectionP0 collectionP0 = new CollectionP0();
         collectionP0.setId(param.getId());
-        if (StringUtils.isEmpty(param.getName())){
+        if (StringUtils.isEmpty(param.getName())) {
             collectionP0.setName("未命名");
-        }else {
+        } else {
             collectionP0.setName(param.getName());
         }
         collectionP0.setDeadline(param.getDeadline());
         collectionP0.setFileTemplate(param.getFileTemplate());
         collectionMapper.updateByPrimaryKeySelective(collectionP0);
+    }
+
+    @Override
+    public String getFileTemplateById(Integer id) {
+        CollectionP0 collectionP0 = collectionMapper.selectByPrimaryKey(id);
+        if (collectionP0 == null) {
+            return "";
+        } else {
+            return collectionP0.getFileTemplate();
+        }
     }
 
     @Override
@@ -63,6 +73,12 @@ public class CollectionServiceImpl implements CollectionService {
             return null;
         }
         return collectionP0;
+    }
+
+    @Override
+    public List<CollectionP0> getAll() {
+        CollectionP0Example example = new CollectionP0Example();
+        return collectionMapper.selectByExample(example);
     }
 
     @Override

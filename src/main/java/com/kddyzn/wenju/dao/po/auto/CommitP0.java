@@ -7,6 +7,10 @@ public class CommitP0 {
 
     private String updaterId;
 
+    private Long updateTime;
+
+    private String data;
+
     public Integer getId() {
         return id;
     }
@@ -29,5 +33,21 @@ public class CommitP0 {
 
     public void setUpdaterId(String updaterId) {
         this.updaterId = updaterId;
+    }
+
+    public Long getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Long updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 }

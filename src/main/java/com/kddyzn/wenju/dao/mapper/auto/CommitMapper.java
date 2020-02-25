@@ -19,15 +19,21 @@ public interface CommitMapper {
 
     int insertSelective(CommitP0 record);
 
+    List<CommitP0> selectByExampleWithBLOBs(CommitP0Example example);
+
     List<CommitP0> selectByExample(CommitP0Example example);
 
     CommitP0 selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") CommitP0 record, @Param("example") CommitP0Example example);
 
+    int updateByExampleWithBLOBs(@Param("record") CommitP0 record, @Param("example") CommitP0Example example);
+
     int updateByExample(@Param("record") CommitP0 record, @Param("example") CommitP0Example example);
 
     int updateByPrimaryKeySelective(CommitP0 record);
+
+    int updateByPrimaryKeyWithBLOBs(CommitP0 record);
 
     int updateByPrimaryKey(CommitP0 record);
 }

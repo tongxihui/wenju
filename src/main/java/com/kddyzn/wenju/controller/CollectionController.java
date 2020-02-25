@@ -20,10 +20,11 @@ public class CollectionController {
     CollectionService collectionService;
 
     @ApiOperation(value = "创建收集")
+    @ApiImplicitParam(required = true)
     @PostMapping("/create")
     public HttpResult createCollection(
             @RequestBody @Valid CreateCollectionParam param) {
-        if (param.getDeadline() != null) {
+        if (param.getDeadline() != 0) {
             if (System.currentTimeMillis() - param.getDeadline() <= 60 * 60) {
                 //deadline不能比现在时间早1小时以内
                 return null;
@@ -38,6 +39,11 @@ public class CollectionController {
     @DeleteMapping("/{id}")
     public HttpResult deleteCollection(@PathVariable Integer id) {
         CollectionP0 collectionP0 = collectionService.getCollectionById(id);
+        if (collectionP0 == null) {
+            //不存在
+            return null;
+        }
+        collectionService.deleteCollection(id);
         return new HttpResult("删除成功");
     }
 
@@ -45,14 +51,27 @@ public class CollectionController {
     @ApiImplicitParam(name = "收集id", required = false, dataType = "Integer")
     @GetMapping("/{id}")
     public HttpResult getCollection(@PathVariable Integer id) {
-        CollectionP0 collectionP0 = collectionService.getCollectionById(id);
-        return new HttpResult(collectionP0);
+        if (id != null) {
+            CollectionP0 collectionP0 = collectionService.getCollectionById(id);
+            if (collectionP0 == null) {
+                //不存在
+                return null;
+            } else {
+                return new HttpResult(collectionP0);
+            }
+        } else {
+            return new HttpResult(collectionService.getAll());
+        }
     }
 
     @ApiOperation(value = "更新收集")
     @ApiImplicitParam(required = true)
     public HttpResult updateCollection(
             @RequestBody @Valid UpdateCollationParam param) {
+        if (collectionService.getCollectionById(param.getId()) == null) {
+            //不存在
+            return null;
+        }
         collectionService.updateCollection(param);
         return new HttpResult("更新成功");
     }
