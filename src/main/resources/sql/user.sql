@@ -7,7 +7,6 @@ CREATE TABLE `wenju_user`
     `real_name` varchar(20)  NOT NULL COMMENT '真实姓名',
     `nick_name` varchar(30)  DEFAULT NULL COMMENT '昵称',
     `token`     varchar(300) NOT NULL COMMENT '教务登录令牌',
-    `u_token`   varchar(300) COMMENT '登录令牌',
     `email`     varchar(100) DEFAULT NULL COMMENT '邮箱',
     `qq`        varchar(12)  DEFAULT NULL COMMENT 'QQ',
     `wx`        varchar(32)  DEFAULT NULL COMMENT '微信',

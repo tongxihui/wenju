@@ -13,8 +13,6 @@ public class UserP0 {
 
     private String token;
 
-    private String uToken;
-
     private String email;
 
     private String qq;
@@ -63,14 +61,6 @@ public class UserP0 {
 
     public void setToken(String token) {
         this.token = token;
-    }
-
-    public String getuToken() {
-        return uToken;
-    }
-
-    public void setuToken(String uToken) {
-        this.uToken = uToken;
     }
 
     public String getEmail() {

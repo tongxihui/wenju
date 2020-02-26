@@ -7,7 +7,6 @@
     <result column="real_name" jdbcType="VARCHAR" property="realName" />
     <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
     <result column="token" jdbcType="VARCHAR" property="token" />
-    <result column="u_token" jdbcType="VARCHAR" property="uToken" />
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="qq" jdbcType="VARCHAR" property="qq" />
     <result column="wx" jdbcType="VARCHAR" property="wx" />
@@ -111,7 +110,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    user_id, phone, real_name, nick_name, token, u_token, email, qq, wx, status, extra
+    user_id, phone, real_name, nick_name, token, email, qq, wx, status, extra
   </sql>
   <select id="selectByExample" parameterType="com.kddyzn.wenju.dao.po.auto.UserP0Example" resultMap="BaseResultMap">
     select
@@ -148,12 +147,12 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into wenju_user (phone, real_name, nick_name, 
-      token, u_token, email, 
-      qq, wx, status, 
+      token, email, qq, wx, 
+      status, 
       extra)
     values (#{phone,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
-      #{token,jdbcType=VARCHAR}, #{uToken,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{qq,jdbcType=VARCHAR}, #{wx,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.common.typehandler.UserStatusEnumHandler}, 
+      #{token,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{wx,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.common.typehandler.UserStatusEnumHandler}, 
       #{extra,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.kddyzn.wenju.dao.po.auto.UserP0">
@@ -173,9 +172,6 @@
       </if>
       <if test="token != null">
         token,
-      </if>
-      <if test="uToken != null">
-        u_token,
       </if>
       <if test="email != null">
         email,
@@ -205,9 +201,6 @@
       </if>
       <if test="token != null">
         #{token,jdbcType=VARCHAR},
-      </if>
-      <if test="uToken != null">
-        #{uToken,jdbcType=VARCHAR},
       </if>
       <if test="email != null">
         #{email,jdbcType=VARCHAR},
@@ -250,9 +243,6 @@
       <if test="record.token != null">
         token = #{record.token,jdbcType=VARCHAR},
       </if>
-      <if test="record.uToken != null">
-        u_token = #{record.uToken,jdbcType=VARCHAR},
-      </if>
       <if test="record.email != null">
         email = #{record.email,jdbcType=VARCHAR},
       </if>
@@ -280,7 +270,6 @@
       real_name = #{record.realName,jdbcType=VARCHAR},
       nick_name = #{record.nickName,jdbcType=VARCHAR},
       token = #{record.token,jdbcType=VARCHAR},
-      u_token = #{record.uToken,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
       qq = #{record.qq,jdbcType=VARCHAR},
       wx = #{record.wx,jdbcType=VARCHAR},
@@ -304,9 +293,6 @@
       </if>
       <if test="token != null">
         token = #{token,jdbcType=VARCHAR},
-      </if>
-      <if test="uToken != null">
-        u_token = #{uToken,jdbcType=VARCHAR},
       </if>
       <if test="email != null">
         email = #{email,jdbcType=VARCHAR},
@@ -332,7 +318,6 @@
       real_name = #{realName,jdbcType=VARCHAR},
       nick_name = #{nickName,jdbcType=VARCHAR},
       token = #{token,jdbcType=VARCHAR},
-      u_token = #{uToken,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       qq = #{qq,jdbcType=VARCHAR},
       wx = #{wx,jdbcType=VARCHAR},
