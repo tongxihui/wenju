@@ -11,6 +11,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,14 +21,17 @@ import java.util.List;
 public class UserController {
 
     @Resource
-    UserService userService;
+    private UserService userService;
+    
 
     @ApiOperation(value = "用户登录", notes = "统一认证登录")
     @ApiImplicitParam(required = true, dataType = "String")
     @PostMapping("/login")
     public HttpResult userLogin(
-            @RequestBody @Valid UserLoginParam param) {
+            @RequestBody @Valid UserLoginParam param,
+            HttpServletResponse response) {
         boolean result = userService.login(param.getUserId(), param.getPassword());
+        response.setHeader("x-user-token", "123");
         return new HttpResult(result ? "登录成功" : "登录失败");
     }
 
