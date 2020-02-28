@@ -40,15 +40,15 @@
         <!-- 用户表-->
 <!--        <table tableName="wenju_user" mapperName="UserMapper" domainObjectName="UserP0">-->
 <!--            <generatedKey column="user_id" sqlStatement="MySql" identity="true"/>-->
-<!--            <columnOverride column="status" javaType="com.kddyzn.wenju.common.enums.UserStatusEnum"-->
-<!--                            typeHandler="com.kddyzn.wenju.common.typehandler.UserStatusEnumHandler"/>-->
+<!--            <columnOverride column="status" javaType="com.kddyzn.wenju.model.enums.UserStatusEnum"-->
+<!--                            typeHandler="com.kddyzn.wenju.model.typehandler.UserStatusEnumHandler"/>-->
 <!--        </table>-->
 
         <!-- 收集表-->
 <!--        <table tableName="wenju_collection" mapperName="CollectionMapper" domainObjectName="CollectionP0">-->
 <!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
-<!--            <columnOverride column="status" javaType="com.kddyzn.wenju.common.enums.CollectionStatusEnum"-->
-<!--                            typeHandler="com.kddyzn.wenju.common.typehandler.CollectionStatusEnumHandler"/>-->
+<!--            <columnOverride column="status" javaType="com.kddyzn.wenju.model.enums.CollectionStatusEnum"-->
+<!--                            typeHandler="com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler"/>-->
 <!--        </table>-->
 
         <!-- 提交表-->

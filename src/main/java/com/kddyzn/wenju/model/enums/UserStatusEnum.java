@@ -1,4 +1,4 @@
-package com.kddyzn.wenju.common.enums;
+package com.kddyzn.wenju.model.enums;
 
 public enum UserStatusEnum {
 

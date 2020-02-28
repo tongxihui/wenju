@@ -10,7 +10,7 @@
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="qq" jdbcType="VARCHAR" property="qq" />
     <result column="wx" jdbcType="VARCHAR" property="wx" />
-    <result column="status" jdbcType="VARCHAR" property="status" typeHandler="com.kddyzn.wenju.common.typehandler.UserStatusEnumHandler" />
+    <result column="status" jdbcType="VARCHAR" property="status" typeHandler="com.kddyzn.wenju.model.typehandler.UserStatusEnumHandler" />
     <result column="extra" jdbcType="VARCHAR" property="extra" />
   </resultMap>
   <sql id="Example_Where_Clause">

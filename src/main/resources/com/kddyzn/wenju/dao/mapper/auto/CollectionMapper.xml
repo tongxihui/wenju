@@ -7,7 +7,7 @@
     <result column="collector" jdbcType="VARCHAR" property="collector" />
     <result column="create_time" jdbcType="BIGINT" property="createTime" />
     <result column="deadline" jdbcType="BIGINT" property="deadline" />
-    <result column="status" jdbcType="VARCHAR" property="status" typeHandler="com.kddyzn.wenju.common.typehandler.CollectionStatusEnumHandler" />
+    <result column="status" jdbcType="VARCHAR" property="status" typeHandler="com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.kddyzn.wenju.dao.po.auto.CollectionP0">
     <result column="file_template" jdbcType="LONGVARCHAR" property="fileTemplate" />

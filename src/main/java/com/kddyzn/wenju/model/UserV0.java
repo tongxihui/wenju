@@ -1,8 +1,7 @@
 package com.kddyzn.wenju.model;
 
-import com.kddyzn.wenju.common.enums.UserStatusEnum;
+import com.kddyzn.wenju.model.enums.UserStatusEnum;
 import com.kddyzn.wenju.dao.po.auto.UserP0;
-import com.kddyzn.wenju.model.params.UpdateUserParam;
 import lombok.Data;
 
 @Data

@@ -1,6 +1,6 @@
 package com.kddyzn.wenju.dao.po.auto;
 
-import com.kddyzn.wenju.common.enums.UserStatusEnum;
+import com.kddyzn.wenju.model.enums.UserStatusEnum;
 import java.util.ArrayList;
 import java.util.List;
 

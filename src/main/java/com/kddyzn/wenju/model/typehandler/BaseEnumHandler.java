@@ -1,4 +1,4 @@
-package com.kddyzn.wenju.common.typehandler;
+package com.kddyzn.wenju.model.typehandler;
 
 import com.kddyzn.wenju.annotation.EnumTypeHandler;
 import lombok.extern.slf4j.Slf4j;

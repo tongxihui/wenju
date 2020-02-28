@@ -1,6 +1,6 @@
 package com.kddyzn.wenju.dao.po.auto;
 
-import com.kddyzn.wenju.common.enums.UserStatusEnum;
+import com.kddyzn.wenju.model.enums.UserStatusEnum;
 
 public class UserP0 {
     private String userId;

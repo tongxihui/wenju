@@ -1,6 +1,6 @@
 package com.kddyzn.wenju.service.impl;
 
-import com.kddyzn.wenju.common.enums.CollectionStatusEnum;
+import com.kddyzn.wenju.model.enums.CollectionStatusEnum;
 import com.kddyzn.wenju.dao.mapper.auto.CollectionMapper;
 import com.kddyzn.wenju.dao.po.auto.CollectionP0;
 import com.kddyzn.wenju.dao.po.auto.CollectionP0Example;

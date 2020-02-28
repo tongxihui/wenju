@@ -38,7 +38,7 @@ public class UserController {
     public HttpResult userLogin(
             @RequestBody @Valid UserLoginParam param,
             HttpServletResponse response) throws UnsupportedEncodingException {
-
+        
         boolean result = userService.login(param.getUserId(), param.getPassword());
         String utoken = hmacSha1Util.encryptUserId(param.getUserId());
 

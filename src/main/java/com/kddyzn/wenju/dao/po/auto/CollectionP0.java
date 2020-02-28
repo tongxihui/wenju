@@ -1,6 +1,6 @@
 package com.kddyzn.wenju.dao.po.auto;
 
-import com.kddyzn.wenju.common.enums.CollectionStatusEnum;
+import com.kddyzn.wenju.model.enums.CollectionStatusEnum;
 
 public class CollectionP0 {
     private Integer id;

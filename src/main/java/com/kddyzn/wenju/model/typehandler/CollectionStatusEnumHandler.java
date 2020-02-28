@@ -1,7 +1,7 @@
-package com.kddyzn.wenju.common.typehandler;
+package com.kddyzn.wenju.model.typehandler;
 
 import com.kddyzn.wenju.annotation.EnumTypeHandler;
-import com.kddyzn.wenju.common.enums.CollectionStatusEnum;
+import com.kddyzn.wenju.model.enums.CollectionStatusEnum;
 
 import java.sql.Types;
 

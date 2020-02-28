@@ -1,6 +1,6 @@
 package com.kddyzn.wenju.service;
 
-import com.kddyzn.wenju.common.enums.CollectionStatusEnum;
+import com.kddyzn.wenju.model.enums.CollectionStatusEnum;
 import com.kddyzn.wenju.dao.po.auto.CollectionP0;
 import com.kddyzn.wenju.model.params.CreateCollectionParam;
 import com.kddyzn.wenju.model.params.UpdateCollationParam;
