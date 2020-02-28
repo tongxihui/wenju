@@ -42,15 +42,15 @@
                   and ${criterion.condition}
                 </when>
                 <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.kddyzn.wenju.common.typehandler.CollectionStatusEnumHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler}
                 </when>
                 <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.kddyzn.wenju.common.typehandler.CollectionStatusEnumHandler} and #{criterion.secondValue,typeHandler=com.kddyzn.wenju.common.typehandler.CollectionStatusEnumHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler} and #{criterion.secondValue,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler}
                 </when>
                 <when test="criterion.listValue">
                   and ${criterion.condition}
                   <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem,typeHandler=com.kddyzn.wenju.common.typehandler.CollectionStatusEnumHandler}
+                    #{listItem,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler}
                   </foreach>
                 </when>
               </choose>
@@ -90,15 +90,15 @@
                   and ${criterion.condition}
                 </when>
                 <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.kddyzn.wenju.common.typehandler.CollectionStatusEnumHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler}
                 </when>
                 <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.kddyzn.wenju.common.typehandler.CollectionStatusEnumHandler} and #{criterion.secondValue,typeHandler=com.kddyzn.wenju.common.typehandler.CollectionStatusEnumHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler} and #{criterion.secondValue,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler}
                 </when>
                 <when test="criterion.listValue">
                   and ${criterion.condition}
                   <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem,typeHandler=com.kddyzn.wenju.common.typehandler.CollectionStatusEnumHandler}
+                    #{listItem,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler}
                   </foreach>
                 </when>
               </choose>
@@ -170,7 +170,7 @@
       deadline, status, 
       file_template)
     values (#{name,jdbcType=VARCHAR}, #{collector,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT}, 
-      #{deadline,jdbcType=BIGINT}, #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.common.typehandler.CollectionStatusEnumHandler}, 
+      #{deadline,jdbcType=BIGINT}, #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler}, 
       #{fileTemplate,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.kddyzn.wenju.dao.po.auto.CollectionP0">
@@ -212,7 +212,7 @@
         #{deadline,jdbcType=BIGINT},
       </if>
       <if test="status != null">
-        #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.common.typehandler.CollectionStatusEnumHandler},
+        #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler},
       </if>
       <if test="fileTemplate != null">
         #{fileTemplate,jdbcType=LONGVARCHAR},
@@ -244,7 +244,7 @@
         deadline = #{record.deadline,jdbcType=BIGINT},
       </if>
       <if test="record.status != null">
-        status = #{record.status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.common.typehandler.CollectionStatusEnumHandler},
+        status = #{record.status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler},
       </if>
       <if test="record.fileTemplate != null">
         file_template = #{record.fileTemplate,jdbcType=LONGVARCHAR},
@@ -261,7 +261,7 @@
       collector = #{record.collector,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=BIGINT},
       deadline = #{record.deadline,jdbcType=BIGINT},
-      status = #{record.status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.common.typehandler.CollectionStatusEnumHandler},
+      status = #{record.status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler},
       file_template = #{record.fileTemplate,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -274,7 +274,7 @@
       collector = #{record.collector,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=BIGINT},
       deadline = #{record.deadline,jdbcType=BIGINT},
-      status = #{record.status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.common.typehandler.CollectionStatusEnumHandler}
+      status = #{record.status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -295,7 +295,7 @@
         deadline = #{deadline,jdbcType=BIGINT},
       </if>
       <if test="status != null">
-        status = #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.common.typehandler.CollectionStatusEnumHandler},
+        status = #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler},
       </if>
       <if test="fileTemplate != null">
         file_template = #{fileTemplate,jdbcType=LONGVARCHAR},
@@ -309,7 +309,7 @@
       collector = #{collector,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=BIGINT},
       deadline = #{deadline,jdbcType=BIGINT},
-      status = #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.common.typehandler.CollectionStatusEnumHandler},
+      status = #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler},
       file_template = #{fileTemplate,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -319,7 +319,7 @@
       collector = #{collector,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=BIGINT},
       deadline = #{deadline,jdbcType=BIGINT},
-      status = #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.common.typehandler.CollectionStatusEnumHandler}
+      status = #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

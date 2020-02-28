@@ -43,15 +43,15 @@
                   and ${criterion.condition}
                 </when>
                 <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.kddyzn.wenju.common.typehandler.UserStatusEnumHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.kddyzn.wenju.model.typehandler.UserStatusEnumHandler}
                 </when>
                 <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.kddyzn.wenju.common.typehandler.UserStatusEnumHandler} and #{criterion.secondValue,typeHandler=com.kddyzn.wenju.common.typehandler.UserStatusEnumHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.kddyzn.wenju.model.typehandler.UserStatusEnumHandler} and #{criterion.secondValue,typeHandler=com.kddyzn.wenju.model.typehandler.UserStatusEnumHandler}
                 </when>
                 <when test="criterion.listValue">
                   and ${criterion.condition}
                   <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem,typeHandler=com.kddyzn.wenju.common.typehandler.UserStatusEnumHandler}
+                    #{listItem,typeHandler=com.kddyzn.wenju.model.typehandler.UserStatusEnumHandler}
                   </foreach>
                 </when>
               </choose>
@@ -91,15 +91,15 @@
                   and ${criterion.condition}
                 </when>
                 <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.kddyzn.wenju.common.typehandler.UserStatusEnumHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.kddyzn.wenju.model.typehandler.UserStatusEnumHandler}
                 </when>
                 <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.kddyzn.wenju.common.typehandler.UserStatusEnumHandler} and #{criterion.secondValue,typeHandler=com.kddyzn.wenju.common.typehandler.UserStatusEnumHandler}
+                  and ${criterion.condition} #{criterion.value,typeHandler=com.kddyzn.wenju.model.typehandler.UserStatusEnumHandler} and #{criterion.secondValue,typeHandler=com.kddyzn.wenju.model.typehandler.UserStatusEnumHandler}
                 </when>
                 <when test="criterion.listValue">
                   and ${criterion.condition}
                   <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem,typeHandler=com.kddyzn.wenju.common.typehandler.UserStatusEnumHandler}
+                    #{listItem,typeHandler=com.kddyzn.wenju.model.typehandler.UserStatusEnumHandler}
                   </foreach>
                 </when>
               </choose>
@@ -152,7 +152,7 @@
       extra)
     values (#{phone,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
       #{token,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{wx,jdbcType=VARCHAR}, 
-      #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.common.typehandler.UserStatusEnumHandler}, 
+      #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.UserStatusEnumHandler}, 
       #{extra,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.kddyzn.wenju.dao.po.auto.UserP0">
@@ -212,7 +212,7 @@
         #{wx,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
-        #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.common.typehandler.UserStatusEnumHandler},
+        #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.UserStatusEnumHandler},
       </if>
       <if test="extra != null">
         #{extra,jdbcType=VARCHAR},
@@ -253,7 +253,7 @@
         wx = #{record.wx,jdbcType=VARCHAR},
       </if>
       <if test="record.status != null">
-        status = #{record.status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.common.typehandler.UserStatusEnumHandler},
+        status = #{record.status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.UserStatusEnumHandler},
       </if>
       <if test="record.extra != null">
         extra = #{record.extra,jdbcType=VARCHAR},
@@ -273,7 +273,7 @@
       email = #{record.email,jdbcType=VARCHAR},
       qq = #{record.qq,jdbcType=VARCHAR},
       wx = #{record.wx,jdbcType=VARCHAR},
-      status = #{record.status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.common.typehandler.UserStatusEnumHandler},
+      status = #{record.status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.UserStatusEnumHandler},
       extra = #{record.extra,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -304,7 +304,7 @@
         wx = #{wx,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
-        status = #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.common.typehandler.UserStatusEnumHandler},
+        status = #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.UserStatusEnumHandler},
       </if>
       <if test="extra != null">
         extra = #{extra,jdbcType=VARCHAR},
@@ -321,7 +321,7 @@
       email = #{email,jdbcType=VARCHAR},
       qq = #{qq,jdbcType=VARCHAR},
       wx = #{wx,jdbcType=VARCHAR},
-      status = #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.common.typehandler.UserStatusEnumHandler},
+      status = #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.UserStatusEnumHandler},
       extra = #{extra,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=VARCHAR}
   </update>

@@ -13,6 +13,9 @@ public interface UserSecretMapper {
     @Select("select * from wenju_user_secret where user_id =#{userId}")
     UserSecret findById(@Param("userId") String userId);
 
+    @Select("select * from wenju_user_secret where utoken =#{utoken}")
+    UserSecret findByToken(@Param("utoken") String utoken);
+
     @Update("update wenju_user_secret set user_id=#{userId},utoken=#{utoken}) where userId={#userId}")
     int updateById(UserSecret userSecret);
 

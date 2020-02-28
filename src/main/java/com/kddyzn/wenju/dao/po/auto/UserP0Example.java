@@ -85,7 +85,7 @@ public class UserP0Example {
             if (value == null) {
                 throw new RuntimeException("Value for " + property + " cannot be null");
             }
-            statusCriteria.add(new Criterion(condition, value, "com.kddyzn.wenju.common.typehandler.UserStatusEnumHandler"));
+            statusCriteria.add(new Criterion(condition, value, "com.kddyzn.wenju.model.typehandler.UserStatusEnumHandler"));
             allCriteria = null;
         }
 
@@ -93,7 +93,7 @@ public class UserP0Example {
             if (value1 == null || value2 == null) {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
-            statusCriteria.add(new Criterion(condition, value1, value2, "com.kddyzn.wenju.common.typehandler.UserStatusEnumHandler"));
+            statusCriteria.add(new Criterion(condition, value1, value2, "com.kddyzn.wenju.model.typehandler.UserStatusEnumHandler"));
             allCriteria = null;
         }
 

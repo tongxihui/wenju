@@ -1,5 +1,6 @@
 package com.kddyzn.wenju.controller;
 
+import com.kddyzn.wenju.constant.AppConstant;
 import com.kddyzn.wenju.dao.po.auto.UserP0;
 import com.kddyzn.wenju.model.HttpResult;
 import com.kddyzn.wenju.model.UserSecret;
@@ -38,7 +39,7 @@ public class UserController {
     public HttpResult userLogin(
             @RequestBody @Valid UserLoginParam param,
             HttpServletResponse response) throws UnsupportedEncodingException {
-        
+
         boolean result = userService.login(param.getUserId(), param.getPassword());
         String utoken = hmacSha1Util.encryptUserId(param.getUserId());
 
@@ -46,7 +47,7 @@ public class UserController {
         UserSecret userSecret = new UserSecret(param.getUserId(), utoken);
         userSecretService.selectUserSecret(param.getUserId());
 
-        response.setHeader("x-user-token", utoken);
+        response.setHeader(AppConstant.UTOKEN, utoken);
         return new HttpResult(result ? "登录成功" : "登录失败");
 
     }

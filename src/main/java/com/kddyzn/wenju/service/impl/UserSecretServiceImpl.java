@@ -25,6 +25,12 @@ public class UserSecretServiceImpl implements UserSecretService {
     }
 
     @Override
+    @Cacheable(key = "#p0")
+    public UserSecret selectUserSecretByToken(String utoken) {
+        return userSecretMapper.findByToken(utoken);
+    }
+
+    @Override
     @CachePut(key = "#p0")
     public void updateById(UserSecret userSecret) {
         userSecretMapper.updateById(userSecret);

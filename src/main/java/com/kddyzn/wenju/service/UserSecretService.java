@@ -10,5 +10,7 @@ public interface UserSecretService {
 
     void updateById(UserSecret userSecret);
 
+    UserSecret selectUserSecretByToken(String utoken);
+
     void deleteById(String userId);
 }
