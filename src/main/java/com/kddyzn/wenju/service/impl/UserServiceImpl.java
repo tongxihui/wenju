@@ -30,7 +30,8 @@ public class UserServiceImpl implements UserService {
         UserP0 userP0 = new UserP0();
         userP0.setUserId(userId);
         userP0.setToken(token);
-        userMapper.updateByPrimaryKeySelective(userP0);
+
+        userMapper.insertSelective(userP0);
         return true;
     }
 

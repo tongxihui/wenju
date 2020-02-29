@@ -38,11 +38,11 @@
         <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
 
         <!-- 用户表-->
-<!--        <table tableName="wenju_user" mapperName="UserMapper" domainObjectName="UserP0">-->
-<!--            <generatedKey column="user_id" sqlStatement="MySql" identity="true"/>-->
-<!--            <columnOverride column="status" javaType="com.kddyzn.wenju.model.enums.UserStatusEnum"-->
-<!--                            typeHandler="com.kddyzn.wenju.model.typehandler.UserStatusEnumHandler"/>-->
-<!--        </table>-->
+        <table tableName="wenju_user" mapperName="UserMapper" domainObjectName="UserP0">
+            <generatedKey column="user_id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="status" javaType="com.kddyzn.wenju.model.enums.UserStatusEnum"
+                            typeHandler="com.kddyzn.wenju.model.typehandler.UserStatusEnumHandler"/>
+        </table>
 
         <!-- 令牌表-->
         <table tableName="wenju_secret" mapperName="SecretMapper" domainObjectName="UserSecretP0">
@@ -50,21 +50,21 @@
         </table>
 
         <!-- 收集表-->
-<!--        <table tableName="wenju_collection" mapperName="CollectionMapper" domainObjectName="CollectionP0">-->
-<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
-<!--            <columnOverride column="status" javaType="com.kddyzn.wenju.model.enums.CollectionStatusEnum"-->
-<!--                            typeHandler="com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler"/>-->
-<!--        </table>-->
+        <table tableName="wenju_collection" mapperName="CollectionMapper" domainObjectName="CollectionP0">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="status" javaType="com.kddyzn.wenju.model.enums.CollectionStatusEnum"
+                            typeHandler="com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler"/>
+        </table>
 
         <!-- 提交表-->
-<!--        <table tableName="wenju_commit" mapperName="CommitMapper" domainObjectName="CommitP0">-->
-<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
-<!--        </table>-->
+        <table tableName="wenju_commit" mapperName="CommitMapper" domainObjectName="CommitP0">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
 
         <!-- 文件表-->
-<!--        <table tableName="wenju_file" mapperName="FileMapper" domainObjectName="FileP0">-->
-<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
-<!--        </table>-->
+        <table tableName="wenju_file" mapperName="FileMapper" domainObjectName="FileP0">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
 
     </context>
 </generatorConfiguration>

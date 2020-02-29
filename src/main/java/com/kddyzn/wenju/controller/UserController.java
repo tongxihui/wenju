@@ -43,11 +43,13 @@ public class UserController {
         boolean result = userService.login(param.getUserId(), param.getPassword());
         String utoken = hmacSha1Util.encryptUserId(param.getUserId());
 
-        CreateSecretParam secretParam = new CreateSecretParam();
-        secretParam.setUserId(param.getUserId());
-        secretParam.setUtoken(utoken);
+        if (result) {
+            CreateSecretParam secretParam = new CreateSecretParam();
+            secretParam.setUserId(param.getUserId());
+            secretParam.setUtoken(utoken);
+            response.setHeader(AppConstant.UTOKEN, utoken);
+        }
 
-        response.setHeader(AppConstant.UTOKEN, utoken);
         return new HttpResult(result ? "登录成功" : "登录失败");
 
     }

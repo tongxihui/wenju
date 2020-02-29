@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS `wenju_user`;
 CREATE TABLE `wenju_user`
 (
     `user_id`   varchar(30)  NOT NULL COMMENT '主键',
-    `phone`     varchar(11)  NOT NULL COMMENT '手机号',
+    `phone`     varchar(11)  COMMENT '手机号',
     `real_name` varchar(20)  NOT NULL COMMENT '真实姓名',
     `nick_name` varchar(30)  DEFAULT NULL COMMENT '昵称',
     `token`     varchar(300) NOT NULL COMMENT '教务登录令牌',
