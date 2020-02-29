@@ -1,5 +1,6 @@
 package com.kddyzn.wenju.controller;
 
+import com.kddyzn.wenju.constant.AppConstant;
 import com.kddyzn.wenju.model.HttpResult;
 import com.kddyzn.wenju.util.CumtJwUtil;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 @RestController
-@RequestMapping("/test")
+@RequestMapping(AppConstant.API_MAP + "/test")
 public class TestController {
 
     @Resource

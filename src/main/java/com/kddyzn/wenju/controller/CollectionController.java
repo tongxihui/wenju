@@ -1,5 +1,6 @@
 package com.kddyzn.wenju.controller;
 
+import com.kddyzn.wenju.constant.AppConstant;
 import com.kddyzn.wenju.dao.po.auto.CollectionP0;
 import com.kddyzn.wenju.model.HttpResult;
 import com.kddyzn.wenju.model.params.CreateCollectionParam;
@@ -13,7 +14,7 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/collection")
+@RequestMapping(AppConstant.API_MAP + "/collection")
 public class CollectionController {
 
     @Resource

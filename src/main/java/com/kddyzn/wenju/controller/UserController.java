@@ -3,11 +3,11 @@ package com.kddyzn.wenju.controller;
 import com.kddyzn.wenju.constant.AppConstant;
 import com.kddyzn.wenju.dao.po.auto.UserP0;
 import com.kddyzn.wenju.model.HttpResult;
-import com.kddyzn.wenju.model.UserSecret;
 import com.kddyzn.wenju.model.UserV0;
+import com.kddyzn.wenju.model.params.CreateSecretParam;
 import com.kddyzn.wenju.model.params.UpdateUserParam;
 import com.kddyzn.wenju.model.params.UserLoginParam;
-import com.kddyzn.wenju.service.UserSecretService;
+import com.kddyzn.wenju.service.SecretService;
 import com.kddyzn.wenju.service.UserService;
 import com.kddyzn.wenju.util.HmacSha1Util;
 import io.swagger.annotations.ApiImplicitParam;
@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping(AppConstant.API_MAP + "/user")
 public class UserController {
 
     @Resource
@@ -30,7 +30,7 @@ public class UserController {
     @Resource
     private HmacSha1Util hmacSha1Util;
     @Resource
-    private UserSecretService userSecretService;
+    private SecretService secretService;
 
 
     @ApiOperation(value = "用户登录", notes = "统一认证登录")
@@ -43,9 +43,9 @@ public class UserController {
         boolean result = userService.login(param.getUserId(), param.getPassword());
         String utoken = hmacSha1Util.encryptUserId(param.getUserId());
 
-        //redis缓存utoken
-        UserSecret userSecret = new UserSecret(param.getUserId(), utoken);
-        userSecretService.selectUserSecret(param.getUserId());
+        CreateSecretParam secretParam = new CreateSecretParam();
+        secretParam.setUserId(param.getUserId());
+        secretParam.setUtoken(utoken);
 
         response.setHeader(AppConstant.UTOKEN, utoken);
         return new HttpResult(result ? "登录成功" : "登录失败");
