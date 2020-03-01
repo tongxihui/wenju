@@ -47,6 +47,7 @@ public class UserController {
             CreateSecretParam secretParam = new CreateSecretParam();
             secretParam.setUserId(param.getUserId());
             secretParam.setUtoken(utoken);
+            secretService.insertSecret(secretParam);
             response.setHeader(AppConstant.UTOKEN, utoken);
         }
 

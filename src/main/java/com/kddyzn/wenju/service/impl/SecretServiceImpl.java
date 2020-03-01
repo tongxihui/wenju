@@ -23,13 +23,17 @@ public class SecretServiceImpl implements SecretService {
         userSecretP0.setUserId(param.getUserId());
         userSecretP0.setUtoken(param.getUtoken());
         userSecretP0.setCreateTime(System.currentTimeMillis());
-        return secretMapper.insertSelective(userSecretP0);
+        if (secretMapper.selectByPrimaryKey(param.getUserId()) != null) {
+            return secretMapper.updateByPrimaryKey(userSecretP0);
+        } else {
+            return secretMapper.insertSelective(userSecretP0);
+        }
     }
 
     @Override
     public UserSecretP0 getSecretByToken(String utoken) {
         UserSecretP0Example example = new UserSecretP0Example();
-        example.createCriteria().andUtokenEqualTo(utoken);
+        example.createCriteria().andUtokenLike(utoken);
         List<UserSecretP0> secretList = secretMapper.selectByExample(example);
         if (secretList == null || secretList.size() == 0) {
             return null;
@@ -52,6 +56,6 @@ public class SecretServiceImpl implements SecretService {
 
     @Override
     public void deleteSecret(String userId) {
-        //TODO: fix deleteSecret
+        secretMapper.deleteByPrimaryKey(userId);
     }
 }

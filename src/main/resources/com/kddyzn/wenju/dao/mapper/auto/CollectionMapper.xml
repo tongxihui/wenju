@@ -1,325 +1,347 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kddyzn.wenju.dao.mapper.auto.CollectionMapper">
-  <resultMap id="BaseResultMap" type="com.kddyzn.wenju.dao.po.auto.CollectionP0">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="collector" jdbcType="VARCHAR" property="collector" />
-    <result column="create_time" jdbcType="BIGINT" property="createTime" />
-    <result column="deadline" jdbcType="BIGINT" property="deadline" />
-    <result column="status" jdbcType="VARCHAR" property="status" typeHandler="com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.kddyzn.wenju.dao.po.auto.CollectionP0">
-    <result column="file_template" jdbcType="LONGVARCHAR" property="fileTemplate" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+    <resultMap id="BaseResultMap" type="com.kddyzn.wenju.dao.po.auto.CollectionP0">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="collector" jdbcType="VARCHAR" property="collector"/>
+        <result column="create_time" jdbcType="BIGINT" property="createTime"/>
+        <result column="deadline" jdbcType="BIGINT" property="deadline"/>
+        <result column="status" jdbcType="VARCHAR" property="status"
+                typeHandler="com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler"/>
+    </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.kddyzn.wenju.dao.po.auto.CollectionP0">
+        <result column="file_template" jdbcType="LONGVARCHAR" property="fileTemplate"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                        <foreach collection="criteria.statusCriteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition}
+                                    #{criterion.value,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition}
+                                    #{criterion.value,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler}
+                                    and
+                                    #{criterion.secondValue,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-            <foreach collection="criteria.statusCriteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler} and #{criterion.secondValue,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler}
-                  </foreach>
-                </when>
-              </choose>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                        <foreach collection="criteria.statusCriteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition}
+                                    #{criterion.value,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition}
+                                    #{criterion.value,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler}
+                                    and
+                                    #{criterion.secondValue,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        id, name, collector, create_time, deadline, status
+    </sql>
+    <sql id="Blob_Column_List">
+        file_template
+    </sql>
+    <select id="selectByExampleWithBLOBs" parameterType="com.kddyzn.wenju.dao.po.auto.CollectionP0Example"
+            resultMap="ResultMapWithBLOBs">
+        select
+        <if test="distinct">
+            distinct
         </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-            <foreach collection="criteria.statusCriteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler} and #{criterion.secondValue,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from wenju_collection
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
         </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    id, name, collector, create_time, deadline, status
-  </sql>
-  <sql id="Blob_Column_List">
-    file_template
-  </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.kddyzn.wenju.dao.po.auto.CollectionP0Example" resultMap="ResultMapWithBLOBs">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from wenju_collection
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByExample" parameterType="com.kddyzn.wenju.dao.po.auto.CollectionP0Example" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from wenju_collection
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from wenju_collection
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from wenju_collection
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <delete id="deleteByExample" parameterType="com.kddyzn.wenju.dao.po.auto.CollectionP0Example">
-    delete from wenju_collection
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.kddyzn.wenju.dao.po.auto.CollectionP0">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into wenju_collection (name, collector, create_time, 
-      deadline, status, 
-      file_template)
-    values (#{name,jdbcType=VARCHAR}, #{collector,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT}, 
-      #{deadline,jdbcType=BIGINT}, #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler}, 
-      #{fileTemplate,jdbcType=LONGVARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="com.kddyzn.wenju.dao.po.auto.CollectionP0">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into wenju_collection
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="name != null">
-        name,
-      </if>
-      <if test="collector != null">
-        collector,
-      </if>
-      <if test="createTime != null">
-        create_time,
-      </if>
-      <if test="deadline != null">
-        deadline,
-      </if>
-      <if test="status != null">
-        status,
-      </if>
-      <if test="fileTemplate != null">
-        file_template,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="collector != null">
-        #{collector,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=BIGINT},
-      </if>
-      <if test="deadline != null">
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByExample" parameterType="com.kddyzn.wenju.dao.po.auto.CollectionP0Example"
+            resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from wenju_collection
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from wenju_collection
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from wenju_collection
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.kddyzn.wenju.dao.po.auto.CollectionP0Example">
+        delete from wenju_collection
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.kddyzn.wenju.dao.po.auto.CollectionP0">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into wenju_collection (name, collector, create_time,
+        deadline, status,
+        file_template)
+        values (#{name,jdbcType=VARCHAR}, #{collector,jdbcType=VARCHAR}, #{createTime,jdbcType=BIGINT},
         #{deadline,jdbcType=BIGINT},
-      </if>
-      <if test="status != null">
         #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler},
-      </if>
-      <if test="fileTemplate != null">
-        #{fileTemplate,jdbcType=LONGVARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.kddyzn.wenju.dao.po.auto.CollectionP0Example" resultType="java.lang.Long">
-    select count(*) from wenju_collection
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update wenju_collection
-    <set>
-      <if test="record.id != null">
-        id = #{record.id,jdbcType=INTEGER},
-      </if>
-      <if test="record.name != null">
+        #{fileTemplate,jdbcType=LONGVARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.kddyzn.wenju.dao.po.auto.CollectionP0">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into wenju_collection
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null">
+                name,
+            </if>
+            <if test="collector != null">
+                collector,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="deadline != null">
+                deadline,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="fileTemplate != null">
+                file_template,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="collector != null">
+                #{collector,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=BIGINT},
+            </if>
+            <if test="deadline != null">
+                #{deadline,jdbcType=BIGINT},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler},
+            </if>
+            <if test="fileTemplate != null">
+                #{fileTemplate,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.kddyzn.wenju.dao.po.auto.CollectionP0Example"
+            resultType="java.lang.Long">
+        select count(*) from wenju_collection
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update wenju_collection
+        <set>
+            <if test="record.id != null">
+                id = #{record.id,jdbcType=INTEGER},
+            </if>
+            <if test="record.name != null">
+                name = #{record.name,jdbcType=VARCHAR},
+            </if>
+            <if test="record.collector != null">
+                collector = #{record.collector,jdbcType=VARCHAR},
+            </if>
+            <if test="record.createTime != null">
+                create_time = #{record.createTime,jdbcType=BIGINT},
+            </if>
+            <if test="record.deadline != null">
+                deadline = #{record.deadline,jdbcType=BIGINT},
+            </if>
+            <if test="record.status != null">
+                status =
+                #{record.status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler},
+            </if>
+            <if test="record.fileTemplate != null">
+                file_template = #{record.fileTemplate,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExampleWithBLOBs" parameterType="map">
+        update wenju_collection
+        set id = #{record.id,jdbcType=INTEGER},
         name = #{record.name,jdbcType=VARCHAR},
-      </if>
-      <if test="record.collector != null">
         collector = #{record.collector,jdbcType=VARCHAR},
-      </if>
-      <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=BIGINT},
-      </if>
-      <if test="record.deadline != null">
         deadline = #{record.deadline,jdbcType=BIGINT},
-      </if>
-      <if test="record.status != null">
-        status = #{record.status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler},
-      </if>
-      <if test="record.fileTemplate != null">
-        file_template = #{record.fileTemplate,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map">
-    update wenju_collection
-    set id = #{record.id,jdbcType=INTEGER},
-      name = #{record.name,jdbcType=VARCHAR},
-      collector = #{record.collector,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=BIGINT},
-      deadline = #{record.deadline,jdbcType=BIGINT},
-      status = #{record.status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler},
-      file_template = #{record.fileTemplate,jdbcType=LONGVARCHAR}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update wenju_collection
-    set id = #{record.id,jdbcType=INTEGER},
-      name = #{record.name,jdbcType=VARCHAR},
-      collector = #{record.collector,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=BIGINT},
-      deadline = #{record.deadline,jdbcType=BIGINT},
-      status = #{record.status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler}
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.kddyzn.wenju.dao.po.auto.CollectionP0">
-    update wenju_collection
-    <set>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="collector != null">
-        collector = #{collector,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        create_time = #{createTime,jdbcType=BIGINT},
-      </if>
-      <if test="deadline != null">
-        deadline = #{deadline,jdbcType=BIGINT},
-      </if>
-      <if test="status != null">
-        status = #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler},
-      </if>
-      <if test="fileTemplate != null">
-        file_template = #{fileTemplate,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.kddyzn.wenju.dao.po.auto.CollectionP0">
-    update wenju_collection
-    set name = #{name,jdbcType=VARCHAR},
-      collector = #{collector,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=BIGINT},
-      deadline = #{deadline,jdbcType=BIGINT},
-      status = #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler},
-      file_template = #{fileTemplate,jdbcType=LONGVARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.kddyzn.wenju.dao.po.auto.CollectionP0">
-    update wenju_collection
-    set name = #{name,jdbcType=VARCHAR},
-      collector = #{collector,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=BIGINT},
-      deadline = #{deadline,jdbcType=BIGINT},
-      status = #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+        status =
+        #{record.status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler},
+        file_template = #{record.fileTemplate,jdbcType=LONGVARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update wenju_collection
+        set id = #{record.id,jdbcType=INTEGER},
+        name = #{record.name,jdbcType=VARCHAR},
+        collector = #{record.collector,jdbcType=VARCHAR},
+        create_time = #{record.createTime,jdbcType=BIGINT},
+        deadline = #{record.deadline,jdbcType=BIGINT},
+        status =
+        #{record.status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.kddyzn.wenju.dao.po.auto.CollectionP0">
+        update wenju_collection
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="collector != null">
+                collector = #{collector,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=BIGINT},
+            </if>
+            <if test="deadline != null">
+                deadline = #{deadline,jdbcType=BIGINT},
+            </if>
+            <if test="status != null">
+                status =
+                #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler},
+            </if>
+            <if test="fileTemplate != null">
+                file_template = #{fileTemplate,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.kddyzn.wenju.dao.po.auto.CollectionP0">
+        update wenju_collection
+        set name          = #{name,jdbcType=VARCHAR},
+            collector     = #{collector,jdbcType=VARCHAR},
+            create_time   = #{createTime,jdbcType=BIGINT},
+            deadline      = #{deadline,jdbcType=BIGINT},
+            status        = #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler},
+            file_template = #{fileTemplate,jdbcType=LONGVARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.kddyzn.wenju.dao.po.auto.CollectionP0">
+        update wenju_collection
+        set name        = #{name,jdbcType=VARCHAR},
+            collector   = #{collector,jdbcType=VARCHAR},
+            create_time = #{createTime,jdbcType=BIGINT},
+            deadline    = #{deadline,jdbcType=BIGINT},
+            status      = #{status,jdbcType=VARCHAR,typeHandler=com.kddyzn.wenju.model.typehandler.CollectionStatusEnumHandler}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
 </mapper>

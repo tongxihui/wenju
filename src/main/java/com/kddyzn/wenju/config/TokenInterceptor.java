@@ -39,9 +39,12 @@ public class TokenInterceptor implements HandlerInterceptor {
 
             UserSecretP0 userSecret = secretService.getSecretByToken(utoken);
 
+            System.out.println("查询到的: \t" + userSecret);
+
             if (userSecret == null) {
                 return false;
             } else {
+                System.out.println("id: \t" + userSecret.getUserId() + " createTime: " + userSecret.getCreateTime());
                 return true;
             }
         }

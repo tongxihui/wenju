@@ -29,9 +29,19 @@ public class UserServiceImpl implements UserService {
         }
         UserP0 userP0 = new UserP0();
         userP0.setUserId(userId);
+        userP0.setRealName("未命名");
         userP0.setToken(token);
 
-        userMapper.insertSelective(userP0);
+
+        if (userMapper.selectByPrimaryKey(userId) == null) {
+            System.out.println("---------------------------------------------------");
+            System.out.println("insert");
+            userMapper.insert(userP0);
+        } else {
+            System.out.println("---------------------------------------------------");
+            System.out.println("update");
+            userMapper.updateByPrimaryKeySelective(userP0);
+        }
         return true;
     }
 
